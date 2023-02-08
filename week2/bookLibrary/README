@@ -1,0 +1,10 @@
+C:\Users\dupzz\playground\limeAcademy\hardhat\bookLibrary> npx hardhat verify --network goerli 0x6021ADc884E6cA0a63118E5645DAB0427B6EAB32
+Nothing to compile
+No need to generate any newer typings.
+Successfully submitted source code for contract
+contracts/Library.sol:Library at 0x6021ADc884E6cA0a63118E5645DAB0427B6EAB32
+for verification on the block explorer. Waiting for verification result...
+
+Successfully verified contract Library on Etherscan.
+https://goerli.etherscan.io/address/0x6021ADc884E6cA0a63118E5645DAB0427B6EAB32#code
+PS C:\Users\dupzz\playground\limeAcademy\hardhat\bookLibrary> 

@@ -18,7 +18,10 @@ contract Library is Ownable {
     mapping(bytes32 => Book) public books; 
     bytes32[] public iterator;           
     
- 
+    event BookAdded(bytes32 key, string title, uint copies);
+    event BookBorrowed(bytes32 key, string title, address borrower);
+    event BookReturned(bytes32 key, string title, address borrower);
+
     modifier checkTitle(string memory _title) {
         bytes32 key = keccak256(abi.encodePacked(_title));
         require(books[key].firstAdd == true, "Library doesn't contain the specified book");
@@ -37,6 +40,8 @@ contract Library is Ownable {
             books[key].availableCopies++;
         }
 
+        emit BookAdded(key, _title, books[key].availableCopies);
+
         return;
     }
 
@@ -49,6 +54,8 @@ contract Library is Ownable {
         books[key].currentBorrowers[msg.sender] = true;
         books[key].borrowingHistory.push(msg.sender);
 
+        emit BookBorrowed(key, _title, msg.sender);
+
         return;
     }
 
@@ -58,6 +65,8 @@ contract Library is Ownable {
 
         books[key].availableCopies++;
         books[key].currentBorrowers[msg.sender] = false;
+
+        emit BookReturned(key, _title, msg.sender);
     }
     
     function getNumberOfBooks() public view returns(uint) {
