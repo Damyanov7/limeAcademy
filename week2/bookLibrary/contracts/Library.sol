@@ -18,10 +18,7 @@ contract Library is Ownable {
     mapping(bytes32 => Book) public books; 
     bytes32[] public iterator;           
     
-    // Checking if such a book was ever added to the library
-    // There is a case where user is trying to borrow a book, and there are 0 left
-    // If there are 0 left, there are either borrowed or never added
-    // In case they are borrowed, user can expect them to be returned at some point
+ 
     modifier checkTitle(string memory _title) {
         bytes32 key = keccak256(abi.encodePacked(_title));
         require(books[key].firstAdd == true, "Library doesn't contain the specified book");
