@@ -1,10 +1,12 @@
 This is a bookLibrary smart contract.
 Supported features of the smart contract are as follows:
 
+```
 Adding book
 Borrowing book
 Returning book
 Checking borrowing history
+```
 
 # Sample Hardhat Project
 
