@@ -1,4 +1,4 @@
-This is a bookLibrary smart contract.
+#This is a bookLibrary smart contract.
 Supported features of the smart contract are as follows:
 
 ```
@@ -7,6 +7,8 @@ Borrowing book
 Returning book
 Checking borrowing history
 ```
+
+Project is subject to updates
 
 # Sample Hardhat Project
 
