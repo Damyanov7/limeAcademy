@@ -29,10 +29,12 @@ describe("Library", function () {
     it("Should add new unique book", async function () {
         await Library.addBooks("RandomTitle2");
         expect(await Library.getNumberOfBooks()).to.equal(2);
+        expect(await Library.getBookDetails("RandomTitle2")).to.eql(["RandomTitle2", 1]);
     });
 
     it("Should borrow a book", async function () {
         expect(Library.borrowBook("RandomTitle")).to.ok;
+        expect(await Library.isRented("RandomTitle")).to.equal(true);
     });
 
     it("Should revert with book does not exist", async function () {
@@ -63,6 +65,8 @@ describe("Library", function () {
 
     it("Should revert with no such title", async function() {
         expect(Library.getBorrowingHistory("RandomTitle123")).to.be.revertedWith("No such title");
+        expect(Library.isRented("RandomTitle123")).to.be.revertedWith("No such title");
+        expect(Library.getBookDetails("RandomTitle123")).to.be.revertedWith("No such title");
     });
 
     // Checking if the addresses that were used when borrowing books are present in the borrowings history
