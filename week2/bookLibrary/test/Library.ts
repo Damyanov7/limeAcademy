@@ -16,18 +16,18 @@ describe("Library", function () {
 
 
     it("Should fail to add book", async function () {
-        expect(Library.connect(addr1).addBooks("RandomTitle")).to.be.revertedWith('Ownable: caller is not the owner');
+        expect(Library.connect(addr1).addBooks("RandomTitle", 5)).to.be.revertedWith('Ownable: caller is not the owner');
     });
 
     for(let i = 1; i < 3; i++) 
         it("Should add book (RandomTitle) " + i, async function () {
-            await Library.addBooks("RandomTitle");
+            await Library.addBooks("RandomTitle", 1);
             expect(await Library.getNumberOfBooks()).to.equal(1);
-            expect(await Library.books(Library.iterator(0))).to.eql([true, i, "RandomTitle"]);
+            expect(await Library.books(Library.iterator(0))).to.eql([i, "RandomTitle"]);
         });
 
     it("Should add new unique book", async function () {
-        await Library.addBooks("RandomTitle2");
+        await Library.addBooks("RandomTitle2", 1);
         expect(await Library.getNumberOfBooks()).to.equal(2);
         expect(await Library.getBookDetails("RandomTitle2")).to.eql(["RandomTitle2", 1]);
     });

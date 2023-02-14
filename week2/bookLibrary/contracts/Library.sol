@@ -8,8 +8,7 @@ import "hardhat/console.sol";
 contract Library is Ownable {
 
     struct Book {
-        bool firstAdd;
-        uint32 availableCopies;     
+        uint32 availableCopies;
         string title; 
         address[] borrowingHistory;
         mapping(address => bool) currentBorrowers; 
@@ -24,17 +23,16 @@ contract Library is Ownable {
 
     modifier checkTitle(string memory _title) {
         bytes32 key = keccak256(abi.encodePacked(_title));
-        require(books[key].firstAdd == true, "Library doesn't contain the specified book");
+        require(keccak256(abi.encodePacked(books[key].title)) != keccak256(abi.encodePacked("")), "Library doesn't contain the specified book");
         _;
     }
 
-    function addBooks(string memory _title) public onlyOwner {
+    function addBook(string memory _title, uint32 _amount) public onlyOwner {
         bytes32 key = keccak256(abi.encodePacked(_title));
 
-        if(!books[key].firstAdd) {
+        if (keccak256(abi.encodePacked(books[key].title)) == keccak256(abi.encodePacked(""))) {
             books[key].title = _title;
-            books[key].availableCopies++;
-            books[key].firstAdd = true;      
+            books[key].availableCopies += _amount;    
             iterator.push(key);
         } else {
             books[key].availableCopies++;
