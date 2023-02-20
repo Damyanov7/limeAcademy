@@ -9,9 +9,9 @@ async function getLibContract() {
     return new ethers.Contract(contractAddress, Library.abi, wallet);
 }
 
-async function addBooks(book) {
+async function addBooks(_book, _amount) {
     const LibraryContract = await getLibContract();
-    await LibraryContract.addBooks(book);
+    await LibraryContract.addBooks(_book, _amount);
 }
 
 async function logAvailableBooks() {
@@ -27,34 +27,34 @@ async function logAvailableBooks() {
     }
 }
 
-async function borrowBook(book) {
+async function borrowBook(_book) {
     const LibraryContract = await getLibContract();
 
-    if (await LibraryContract.isRented(book)) {
+    if (await LibraryContract.isRented(_book)) {
         console.log("Book is already borrowed");
     } else {
-        await LibraryContract.borrowBook(book);
+        await LibraryContract.borrowBook(_book);
     }
 }
 
-async function returnBook(book) {
+async function returnBook(_book) {
     const LibraryContract = await getLibContract();
 
-    if (await LibraryContract.isRented(book)) {
-        await LibraryContract.returnBook(book);
+    if (await LibraryContract.isRented(_book)) {
+        await LibraryContract.returnBook(_book);
     } else {
         console.log("Invalid return book")
     }
 }
 
-async function logBookDetails(book) {
+async function logBookDetails(_book) {
     const LibraryContract = await getLibContract();
-    let details = await LibraryContract.getBookDetails(book);
+    let details = await LibraryContract.getBookDetails(_book);
     console.log(details)
 }
 
-async function logBookCopies(book) {
+async function logBookCopies(_book) {
     const LibraryContract = await getLibContract();
-    let copies = (await LibraryContract.getBookDetails(book))[1];
+    let copies = (await LibraryContract.getBookDetails(_book))[1];
     console.log("Available copies are: " + copies);
 }

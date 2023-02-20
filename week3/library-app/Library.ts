@@ -35,7 +35,7 @@ const run = async function() {
             default:
                 break;
             case '1':
-                await libFuncs.addBooks("HarryPotter");
+                await libFuncs.addBooks("HarryPotter", 1);
                 break;
             case '2':
                 await libFuncs.logAvailableBooks();
