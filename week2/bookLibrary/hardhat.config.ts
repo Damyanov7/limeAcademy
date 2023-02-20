@@ -35,6 +35,14 @@ module.exports = {
         `32eb75bddc05680c9b134e112f03795bfac04c215f942b52e853ca24447b7a0f`,
       ],
     },
+    // Sepolia testnet
+    sepolia: {
+      url: `https://sepolia.infura.io/v3/b9cf6e9f45ba49f6bbe9cc91cba17e36`,
+      chainId: 5,
+      accounts: [
+        `32eb75bddc05680c9b134e112f03795bfac04c215f942b52e853ca24447b7a0f`,
+      ],
+    },
   },
   etherscan: {
     // Your API key for Etherscan
