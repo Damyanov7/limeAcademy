@@ -1,0 +1,3 @@
+[submodule "week4/limeReact/web3-examples"]
+	path = week4/limeReact/web3-examples
+	url = https://github.com/LimeChain/web3-examples

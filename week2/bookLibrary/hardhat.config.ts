@@ -28,19 +28,18 @@ module.exports = {
   },
   networks: {
     // Goerli Testnet
-    goerli: {
-      url: `https://goerli.infura.io/v3/a68b1888eded486f9b656e08f5db1610`,
-      chainId: 5,
-      accounts: [
-        `32eb75bddc05680c9b134e112f03795bfac04c215f942b52e853ca24447b7a0f`,
-      ],
-    },
+    // goerli: {
+    //   url: `https://goerli.infura.io/v3/a68b1888eded486f9b656e08f5db1610`,
+    //   chainId: 5,
+    //   accounts: [
+    //     `32eb75bddc05680c9b134e112f03795bfac04c215f942b52e853ca24447b7a0f`,
+    //   ],
+    // },
     // Sepolia testnet
-    sepolia: {
-      url: `https://sepolia.infura.io/v3/b9cf6e9f45ba49f6bbe9cc91cba17e36`,
-      chainId: 5,
+    Sepolia: {
+      url: `https://sepolia.infura.io/v3/a68b1888eded486f9b656e08f5db1610`,
       accounts: [
-        `32eb75bddc05680c9b134e112f03795bfac04c215f942b52e853ca24447b7a0f`,
+        `944c4a11c7145acdf6950781f98e2ec4d8c530ced13e1c503035c73e33d5e91a`,
       ],
     },
   },
